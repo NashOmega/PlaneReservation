@@ -1,5 +1,4 @@
 using Api.Controllers.Interfaces;
-using Core.Request;
 using Core.Response;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;

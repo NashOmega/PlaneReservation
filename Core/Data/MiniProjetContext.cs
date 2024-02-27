@@ -1,8 +1,5 @@
 ﻿using Core.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using System.ComponentModel;
-using System.Xml;
 
 namespace Core.Data
 {

@@ -1,10 +1,8 @@
 ﻿using Api.Controllers;
 using Api.Controllers.Interfaces;
-using Core.Data;
 using Core.Interfaces.Repository;
 using Core.Interfaces.SeedDatabase;
 using Core.Interfaces.Services;
-using Core.Profiles;
 using Repository;
 using Services;
 using Services.Seed;
@@ -17,10 +15,7 @@ namespace Api.Configuration
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            services.AddScoped<IPlaneRepository, PlaneRepository>();
-            services.AddScoped<IReservationRepository, ReservationRepository>();
-            services.AddScoped<IPassengerRepository, PassengerRepository>();
-            services.AddScoped<ISeatArrangementRepository, SeatArrangementRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddScoped<IPlaneController, PlaneController>();
             services.AddScoped<IReservationController, ReservationController>();
@@ -28,7 +23,6 @@ namespace Api.Configuration
             services.AddScoped<IPlaneService, PlaneService>();
             services.AddScoped<IReservationService, ReservationService>();
             services.AddScoped<IPassengerService, PassengerService>();
-            services.AddScoped<ISeatArrangementService, SeatArrangementService>();
 
             services.AddScoped<IInitSeedService, InitSeedService>();
 

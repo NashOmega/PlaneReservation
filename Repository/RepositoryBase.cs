@@ -1,6 +1,7 @@
 ﻿using Core.Data;
 using Core.Interfaces.Repository;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System.Linq.Expressions;
 
 namespace Repository
@@ -8,16 +9,18 @@ namespace Repository
     public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
         public MiniProjetContext _context { get; set; }
-        public RepositoryBase(MiniProjetContext context)
+        public readonly ILogger _logger;
+        public RepositoryBase(MiniProjetContext context, ILogger logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<T>> FindAll()
+        public async Task<IEnumerable<T>> FindAllAsync()
         {
             return await _context.Set<T>().AsNoTracking().ToListAsync();
         }
@@ -27,37 +30,32 @@ namespace Repository
         /// </summary>
         /// <param name="expression">expression provided for the search operation</param>
         /// <returns></returns>
-        public async Task<IEnumerable<T>> FindByCondition(Expression<Func<T, bool>> expression)
+        public async Task<IEnumerable<T>> FindByConditionAsync(Expression<Func<T, bool>> expression)
         {
             return await _context.Set<T>().Where(expression).AsNoTracking().ToListAsync();
         }
 
-        public async Task<T?> FindOneByCondition(Expression<Func<T, bool>> expression)
+        public async Task<T?> FindOneByConditionAsync(Expression<Func<T, bool>> expression)
         {
             return await _context.Set<T>().FirstOrDefaultAsync(expression);
         }
 
-        public async Task<T?> FindById(int id)
+        public async Task<T?> FindByIdAsync(int id)
         {
             return await _context.Set<T>().FindAsync(id);
         }
 
-        public async Task<T> Create(T entity)
+        public async Task<T> CreateAsync(T entity)
         {
-            var dbEntity = _context.Set<T>().Add(entity).Entity;
-            await _context.SaveChangesAsync();
-            return dbEntity;
+           return await Task.Run(() => _context.Set<T>().Add(entity).Entity);
         }
-        public async Task<T> Update(T entity)
+        public async Task<T> UpdateAsync(T entity)
         {
-            var dbEntity = _context.Set<T>().Update(entity).Entity;
-            await _context.SaveChangesAsync();
-            return dbEntity;
+            return await Task.Run(() => _context.Set<T>().Update(entity).Entity);
         }
-        public async Task Delete(T entity)
+        public async Task DeleteAsync(T entity)
         {
-           _context.Set<T>().Remove(entity);
-            await _context.SaveChangesAsync();
+           await Task.Run(() => _context.Set<T>().Remove(entity));   
         }
     }
 }

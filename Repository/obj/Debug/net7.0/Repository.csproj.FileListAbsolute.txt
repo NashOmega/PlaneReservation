@@ -23,8 +23,9 @@ C:\Users\Nash\dot net\PlaneReservation\Repository\obj\Debug\net7.0\Repository.Ge
 C:\Users\Nash\dot net\PlaneReservation\Repository\obj\Debug\net7.0\Repository.AssemblyInfoInputs.cache
 C:\Users\Nash\dot net\PlaneReservation\Repository\obj\Debug\net7.0\Repository.AssemblyInfo.cs
 C:\Users\Nash\dot net\PlaneReservation\Repository\obj\Debug\net7.0\Repository.csproj.CoreCompileInputs.cache
-C:\Users\Nash\dot net\PlaneReservation\Repository\obj\Debug\net7.0\Repository.csproj.CopyComplete
 C:\Users\Nash\dot net\PlaneReservation\Repository\obj\Debug\net7.0\Repository.dll
 C:\Users\Nash\dot net\PlaneReservation\Repository\obj\Debug\net7.0\refint\Repository.dll
 C:\Users\Nash\dot net\PlaneReservation\Repository\obj\Debug\net7.0\Repository.pdb
 C:\Users\Nash\dot net\PlaneReservation\Repository\obj\Debug\net7.0\ref\Repository.dll
+C:\Users\Nash\dot net\PlaneReservation\Repository\obj\Debug\net7.0\Repository.sourcelink.json
+C:\Users\Nash\dot net\PlaneReservation\Repository\obj\Debug\net7.0\Repository.csproj.Up2Date

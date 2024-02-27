@@ -5,18 +5,13 @@ using Core.Interfaces.Services;
 using Core.Request;
 using Core.Response;
 using Microsoft.Extensions.Logging;
-using Repository;
-using System.Numerics;
 
 namespace Services
 {
     public class ReservationService : IReservationService
     {
-        private readonly IReservationRepository _reservationRepository;
-        private readonly IPassengerRepository _passengerRepository;
-        private readonly IPlaneRepository _planeRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IPassengerService _passengerService;
-        private readonly ISeatArrangementRepository _seatArrangementRepository;
         private readonly IMapper _mapper;
         private readonly ILogger<ReservationService> _logger;
 
@@ -29,12 +24,9 @@ namespace Services
         /// <param name="passengerService">The service for handling passenger-related operations.</param>
         /// <param name="mapper">The mapper for mapping between different types.</param>
         /// <param name="logger">The logger for logging messages.</param>
-        public ReservationService(IReservationRepository reservationRepository, IPassengerRepository passengerRepository, IPlaneRepository planeRepository, ISeatArrangementRepository seatArrangementRepository, IPassengerService passengerService, IMapper mapper, ILogger<ReservationService> logger)
+        public ReservationService(IUnitOfWork unitOfWork,  IPassengerService passengerService, IMapper mapper, ILogger<ReservationService> logger)
         {
-            _reservationRepository = reservationRepository;
-            _passengerRepository = passengerRepository;
-            _seatArrangementRepository = seatArrangementRepository;
-            _planeRepository = planeRepository;
+           _unitOfWork = unitOfWork;
             _passengerService = passengerService;
             _mapper = mapper;
             _logger = logger;
@@ -55,7 +47,7 @@ namespace Services
             var res = new MainResponse<ReservationResponse>();
             try
             {
-                var plane = await _planeRepository.FindById(reservationRequest.PlaneId);
+                var plane = await _unitOfWork.Planes.FindByIdAsync(reservationRequest.PlaneId);
                 
 
                 if (plane != null && IsPlaneAvailable(plane))
@@ -117,12 +109,13 @@ namespace Services
                     if (reservationWithPassengersList.Passengers.Count != 0)
                     {
                         reservationWithPassengersList.Plane = plane;
-                        var createdReservation = await _reservationRepository.Create(reservationWithPassengersList);
+                        var createdReservation = await _unitOfWork.Reservations.CreateAsync(reservationWithPassengersList);
 
                         await AffectSeats(createdReservation, plane);
 
+                        res.Success = await _unitOfWork.CompleteAsync();
                         res.Data = _mapper.Map<ReservationResponse>(createdReservation);
-                        res.Success = true;     
+                          
                     }
                     else
                     {
@@ -147,16 +140,16 @@ namespace Services
         {
             foreach (var passenger in reservation.Passengers)
             {
-                var seat = await _seatArrangementRepository.FindAvailableSeat(plane.Id);
+                var seat = await _unitOfWork.Seats.FindAvailableSeat(plane.Id);
                 passenger.SeatNumber = seat.SeatNumber;
-                await _passengerRepository.Update(passenger);
+                await _unitOfWork.Passengers.UpdateAsync(passenger);
 
                 seat.Status = false;
-                await _seatArrangementRepository.Update(seat);
+                await _unitOfWork.Seats.UpdateAsync(seat);
             }
 
             plane.AvailableSeats -= reservation.Passengers.Count;
-            await _planeRepository.Update(plane);
+            await _unitOfWork.Planes.UpdateAsync(plane);
         }
 
         /// <summary>
@@ -169,7 +162,7 @@ namespace Services
         {
             foreach (PassengerRequest passengerRequest in passengerRequests)
             {
-                var passenger = await _passengerRepository.FindByEmail(passengerRequest.Email);
+                var passenger = await _unitOfWork.Passengers.FindByEmail(passengerRequest.Email);
  
                 if (passenger != null && !DoesPassengerHaveTheSameReservation(passenger, reservation)) 
                     reservation.Passengers.Add(passenger);
@@ -247,7 +240,7 @@ namespace Services
             var message = "This is the reservation of id " + id;
             try
             {
-                var reservation = await _reservationRepository.FindByIdIncludePassengers(id);
+                var reservation = await _unitOfWork.Reservations.FindByIdIncludePassengers(id);
                 if (reservation != null)
                 {
                     res.Data = _mapper.Map<ReservationResponse>(reservation);

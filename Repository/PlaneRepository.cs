@@ -2,22 +2,23 @@
 using Core.Entities;
 using Core.Interfaces.Repository;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Repository
 {
     public class PlaneRepository : RepositoryBase<PlaneEntity>, IPlaneRepository
     {
-        public PlaneRepository(MiniProjetContext context) : base(context) {   
+        public PlaneRepository(MiniProjetContext context,ILogger logger ) : base(context, logger) {   
 
         }
-        public async Task<IEnumerable<PlaneEntity>> FindAllPlanesByPage(int page, int size)
+        public async Task<IEnumerable<PlaneEntity>> FindAllPlanesByPageAsync(int page, int size)
         {
             int skip = (page - 1) * size;
 
             return await _context.Planes.Skip(skip).Take(size).ToListAsync();
         } 
         
-        public async Task<IEnumerable<PlaneEntity>> FindAllAvailablePlanesByPage(int page, int size)
+        public async Task<IEnumerable<PlaneEntity>> FindAllAvailablePlanesByPageAsync(int page, int size)
         {
             int skip = (page - 1) * size;
 

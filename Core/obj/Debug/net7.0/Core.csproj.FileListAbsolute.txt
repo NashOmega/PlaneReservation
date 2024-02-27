@@ -26,3 +26,4 @@ C:\Users\Nash\dot net\PlaneReservation\Core\obj\Debug\net7.0\refint\Core.dll
 C:\Users\Nash\dot net\PlaneReservation\Core\obj\Debug\net7.0\Core.pdb
 C:\Users\Nash\dot net\PlaneReservation\Core\obj\Debug\net7.0\Core.genruntimeconfig.cache
 C:\Users\Nash\dot net\PlaneReservation\Core\obj\Debug\net7.0\ref\Core.dll
+C:\Users\Nash\dot net\PlaneReservation\Core\obj\Debug\net7.0\Core.sourcelink.json

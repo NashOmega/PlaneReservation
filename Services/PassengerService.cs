@@ -10,7 +10,7 @@ namespace Services
 {
     public class PassengerService : IPassengerService
     {
-        private readonly IPassengerRepository _passengerRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly ILogger<PassengerService> _logger;
 
@@ -20,9 +20,9 @@ namespace Services
         /// <param name="passengerRepository">The repository for handling passenger data.</param>
         /// <param name="mapper">The mapper for mapping between different types.</param>
         /// <param name="logger">The logger for logging messages.</param>
-        public PassengerService(IPassengerRepository passengerRepository, IMapper mapper, ILogger<PassengerService> logger)
+        public PassengerService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<PassengerService> logger)
         {
-            _passengerRepository = passengerRepository;
+           _unitOfWork = unitOfWork;
             _mapper = mapper;  
             _logger = logger;
         }
@@ -43,7 +43,7 @@ namespace Services
             { 
                 foreach (PassengerRequest passengerRequest in passengerRequests)
                 {
-                    var dbPassenger = await _passengerRepository.FindByEmail(passengerRequest.Email);
+                    var dbPassenger = await _unitOfWork.Passengers.FindByEmail(passengerRequest.Email);
                     if (dbPassenger==null)
                     {
                         var addedPassenger = await AddPassenger(_mapper.Map<PassengerEntity>(passengerRequest));
@@ -76,7 +76,8 @@ namespace Services
         /// </returns>
         public async Task<PassengerResponse?> AddPassenger(PassengerEntity passenger)
         {
-                var createdPassenger = await _passengerRepository.Create(passenger);
+                var createdPassenger = await _unitOfWork.Passengers.CreateAsync(passenger);
+                await _unitOfWork.CompleteAsync();
                 return _mapper.Map<PassengerResponse>(createdPassenger); 
         }
 
@@ -91,7 +92,8 @@ namespace Services
         /// </returns>
         public async Task<PassengerResponse?> UpdatePassenger(PassengerEntity passenger)
         {
-            var updatedPassenger = await _passengerRepository.Update(passenger);
+            var updatedPassenger = await _unitOfWork.Passengers.UpdateAsync(passenger);
+            await _unitOfWork.CompleteAsync();
             return _mapper.Map<PassengerResponse>(updatedPassenger);
         }
     }

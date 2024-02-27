@@ -11,8 +11,7 @@ namespace Services
 {
     public class PlaneService : IPlaneService
     {
-        private readonly IPlaneRepository _planeRepository;
-        private readonly ISeatArrangementService _seatArrangementService;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly ILogger<PlaneService> _logger;
 
@@ -22,10 +21,9 @@ namespace Services
         /// <param name="planeRepository">The repository for managing plane data.</param>
         /// <param name="mapper">The mapper for object mapping.</param>
         /// <param name="logger">The logger for logging messages.</param>
-        public PlaneService(IPlaneRepository planeRepository, IMapper mapper, ILogger<PlaneService> logger, ISeatArrangementService seatArrangementService)
+        public PlaneService(IUnitOfWork unitOfWok, IMapper mapper, ILogger<PlaneService> logger)
         {
-            _planeRepository = planeRepository;
-            _seatArrangementService = seatArrangementService;
+           _unitOfWork = unitOfWok;
             _mapper = mapper;
             _logger = logger;
         }
@@ -45,7 +43,7 @@ namespace Services
             var message = "This is the planes list";
             try
             { 
-                var planes = await _planeRepository.FindAllPlanesByPage(page, size);
+                var planes = await _unitOfWork.Planes.FindAllPlanesByPageAsync(page, size);
                 res.Data = planes.Select(p=>_mapper.Map<PlaneResponse>(p)).ToList();
                 res.Success = true; 
             }
@@ -73,7 +71,7 @@ namespace Services
             var message = "This is the available planes list";
             try
             {
-                var planes = await _planeRepository.FindAllAvailablePlanesByPage(page, size);
+                var planes = await _unitOfWork.Planes.FindAllAvailablePlanesByPageAsync(page, size);
                 res.Data = planes.Select(p => _mapper.Map<PlaneResponse>(p)).ToList();
                 res.Success = true;
             }
@@ -100,7 +98,7 @@ namespace Services
             var message = "This is the plane of id " + id;
             try
             {
-                var plane = await _planeRepository.FindById(id);
+                var plane = await _unitOfWork.Planes.FindByIdAsync(id);
                 if (plane != null)
                 {
                     res.Data = _mapper.Map<PlaneResponse>(plane);
@@ -138,10 +136,11 @@ namespace Services
                 bool IsPlaneExistsBool = await IsPlaneExists(plane);
                 if (!IsPlaneExistsBool)
                 {
-                    var createdPlane = await _planeRepository.Create(plane);
-                    await _seatArrangementService.GeneratePlaneSeats(createdPlane);
+                    var createdPlane = await _unitOfWork.Planes.CreateAsync(plane);
+                    await _unitOfWork.Seats.GeneratePlaneSeats(createdPlane);
+
+                    res.Success = await _unitOfWork.CompleteAsync();
                     res.Data = _mapper.Map<PlaneResponse>(createdPlane);
-                    res.Success = true;
                 }
                 else
                 {
@@ -172,13 +171,14 @@ namespace Services
             var message = "Plane Updated Successfully";
             try
             {
-                var dbPlane = await _planeRepository.FindById(id);
+                var dbPlane = await _unitOfWork.Planes.FindByIdAsync(id);
                 bool IsPlaneExistsBool = await IsPlaneExists(_mapper.Map<PlaneEntity>(planeRequest));
                 if (dbPlane != null && !IsPlaneExistsBool)
                 {
-                    var createdPlane = await _planeRepository.Update(_mapper.Map(planeRequest, dbPlane));
-                    res.Data = _mapper.Map<PlaneResponse>(createdPlane);
-                    res.Success = true;               
+                    var createdPlane = await _unitOfWork.Planes.UpdateAsync(_mapper.Map(planeRequest, dbPlane));
+
+                    res.Success = await _unitOfWork.CompleteAsync();
+                    res.Data = _mapper.Map<PlaneResponse>(createdPlane);              
                 }
                 else 
                 {
@@ -210,11 +210,12 @@ namespace Services
             var message = "Plane Deleted Successfully";
             try
             {
-                var dbPlane = await _planeRepository.FindById(id);
+                var dbPlane = await _unitOfWork.Planes.FindByIdAsync(id);
                 if (dbPlane != null)
                 {
-                   await _planeRepository.Delete(dbPlane);
-                    res.Data = res.Success = true;
+                    await _unitOfWork.Planes.DeleteAsync(dbPlane);
+
+                   res.Success = await _unitOfWork.CompleteAsync();
                 }
                 else
                 {
@@ -241,7 +242,7 @@ namespace Services
         /// </returns>
         public async Task<bool> IsPlaneExists(PlaneEntity plane)
         {
-            var planesMatchingCriteria = await _planeRepository.FindByCondition(
+            var planesMatchingCriteria = await _unitOfWork.Planes.FindByConditionAsync(
                                      p => p.Name == plane.Name && p.Model == plane.Model && p.Serial == plane.Serial);
 
             return planesMatchingCriteria.Any();
