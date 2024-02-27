@@ -1,0 +1,45 @@
+﻿@page
+@model Api.Pages.Plane.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+<partial name="_Notification" />
+<h3>Update Plane's Information</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="NewPlaneResponse.Id" />
+            <div class="form-group">
+                <label asp-for="NewPlaneResponse.Name" class="control-label"></label>
+                <input asp-for="NewPlaneResponse.Name" class="form-control" />
+                <span asp-validation-for="NewPlaneResponse.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewPlaneResponse.Model" class="control-label"></label>
+                <input asp-for="NewPlaneResponse.Model" class="form-control" />
+                <span asp-validation-for="NewPlaneResponse.Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewPlaneResponse.Serial" class="control-label"></label>
+                <input asp-for="NewPlaneResponse.Serial" class="form-control" />
+                <span asp-validation-for="NewPlaneResponse.Serial" class="text-danger"></span>
+            </div>
+            <br/>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-warning" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mt-1">
+    <a href="/Plane/Index" class="btn btn-dark">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

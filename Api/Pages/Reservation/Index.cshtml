@@ -1,0 +1,29 @@
+﻿@page
+@model Api.Pages.Reservation.IndexModel
+@{
+    ViewData["Title"] = "Book Reservation";
+}
+
+<partial name="_Notification" />
+<div>
+    <img src="/images/plane.jpg" height="250" width="1350">
+</div>
+<div class="welcome-text">
+    <h1>Bienvenue sur notre site de réservation</h1>
+    <p>Merci de choisir notre service. Pour commencer, veuillez indiquer le nombre de personnes pour lesquelles vous souhaitez faire une réservation :</p>
+</div>
+<div class="passengers-number">
+    <form method="post">
+        <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="PassengersNumber" class="control-label"></label>
+                <input asp-for="PassengersNumber" class="form-control" value="1" />
+                <span asp-validation-for="PassengersNumber" class="text-danger"></span>
+        </div>
+        </div>
+        <br/>
+        <div class="form-group">
+            <input type="submit" value="Continue" class="btn btn-primary" />
+        </div>
+    </form>
+</div>

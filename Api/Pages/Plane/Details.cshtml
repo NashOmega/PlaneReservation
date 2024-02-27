@@ -1,0 +1,41 @@
+﻿@page
+@model Api.Pages.Plane.DetailsModel
+@{
+    ViewData["Title"] = "Plane's Details";
+}
+<partial name="_Notification" />
+<h3>Here Is The Plane's Information</h3>
+<hr />
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NewPlaneResponse.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NewPlaneResponse.Name)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NewPlaneResponse.Model)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NewPlaneResponse.Model)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NewPlaneResponse.Model)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NewPlaneResponse.Model)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a href="/Plane/Edit?id=@Model.NewPlaneResponse?.Id" class="btn btn-warning">Update</a>
+    <a href="/plane/Delete?id=@Model.NewPlaneResponse?.Id" class="btn btn-danger m-lg-2">Delete</a>
+    <div class="mt-1">
+        <a href="/Plane/Index" class="btn btn-dark">Back to List</a>
+    </div>
+</div>

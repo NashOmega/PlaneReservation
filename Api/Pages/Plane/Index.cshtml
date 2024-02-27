@@ -1,0 +1,77 @@
+﻿@page
+@model Api.Pages.Plane.IndexModel
+@{
+    ViewData["Title"] = "PlanesList";
+}
+
+<partial name="_Notification" />
+<h3>List Of Planes</h3>
+<hr />
+
+<div class="row mb-4">
+    <div class="col-md-6">
+        <form method="get">
+            <div class="row mb-2">
+            <div class="col-md-4">
+                <label for="pageNumber" class="form-label">Page Number</label>
+                <br />
+                    <input type="number" id="pageNumber" name="pageNumber" aria-describedby="pageNumberDesc">
+                <div id="pageNumberDesc" class="form-text">Which page do you want?</div>
+            </div>
+            <div class="col-md-4">
+                <label for="size" class="form-label">Number of planes</label>
+                <br />
+                <input type="number" id="size" name="size" aria-describedby="listSize">
+                <div id="listSize" class="form-text">With how many planes?</div>
+            </div>
+            </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+    <div class="col-md-6">
+    </div>
+ </div>
+
+<div class="col-md-4" >
+    <div class="row m-lg-1">
+    <a asp-page="/Plane/Create" class="btn btn-primary">Create New</a>
+    </div>
+</div>
+@{
+ 
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Model</th>
+            <th>Serial</th>
+            <th>Seats</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.planeList) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Serial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvailableSeats)
+            </td>
+            <td>
+                <a href="/Plane/Details?id=@item.Id" class="btn btn-primary">Details</a> |
+                <a href="/Plane/Edit?id=@item.Id" class="btn btn-warning">Update</a> |
+                <a href="/Plane/Delete?id=@item.Id" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+}
