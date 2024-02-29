@@ -3,108 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Nash\\dot net\\PlaneReservation\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3EB9B801-350A-4A36-8921-0442E7B446E0}|Services\\Services.csproj|c:\\users\\nash\\dot net\\planereservation\\services\\reservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EB9B801-350A-4A36-8921-0442E7B446E0}|Services\\Services.csproj|solutionrelative:services\\reservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|c:\\users\\nash\\dot net\\planereservation\\api\\handlers\\planes\\getallplanesbypagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|solutionrelative:api\\handlers\\planes\\getallplanesbypagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|c:\\users\\nash\\dot net\\planereservation\\api\\queries\\planes\\getallplanesbypagequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|solutionrelative:api\\queries\\planes\\getallplanesbypagequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3EB9B801-350A-4A36-8921-0442E7B446E0}|Services\\Services.csproj|c:\\users\\nash\\dot net\\planereservation\\services\\planeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3EB9B801-350A-4A36-8921-0442E7B446E0}|Services\\Services.csproj|solutionrelative:services\\planeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EB9B801-350A-4A36-8921-0442E7B446E0}|Services\\Services.csproj|c:\\users\\nash\\dot net\\planereservation\\services\\passengerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EB9B801-350A-4A36-8921-0442E7B446E0}|Services\\Services.csproj|solutionrelative:services\\passengerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|c:\\users\\nash\\dot net\\planereservation\\api\\controllers\\planecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|solutionrelative:api\\controllers\\planecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EB9B801-350A-4A36-8921-0442E7B446E0}|Services\\Services.csproj|c:\\users\\nash\\dot net\\planereservation\\services\\servicebase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EB9B801-350A-4A36-8921-0442E7B446E0}|Services\\Services.csproj|solutionrelative:services\\servicebase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2B225172-6B9E-4CAE-B7A7-A71D78FAE393}|Core\\Core.csproj|c:\\users\\nash\\dot net\\planereservation\\core\\request\\planerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2B225172-6B9E-4CAE-B7A7-A71D78FAE393}|Core\\Core.csproj|solutionrelative:core\\request\\planerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5C0D9CD7-975F-4ED4-A11F-C47AA57DFFC5}|Repository\\Repository.csproj|c:\\users\\nash\\dot net\\planereservation\\repository\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5C0D9CD7-975F-4ED4-A11F-C47AA57DFFC5}|Repository\\Repository.csproj|solutionrelative:repository\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|c:\\users\\nash\\dot net\\planereservation\\api\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|solutionrelative:api\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5C0D9CD7-975F-4ED4-A11F-C47AA57DFFC5}|Repository\\Repository.csproj|c:\\users\\nash\\dot net\\planereservation\\repository\\repositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5C0D9CD7-975F-4ED4-A11F-C47AA57DFFC5}|Repository\\Repository.csproj|solutionrelative:repository\\repositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|c:\\users\\nash\\dot net\\planereservation\\api\\handlers\\planes\\getallplaneshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|solutionrelative:api\\handlers\\planes\\getallplaneshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|c:\\users\\nash\\dot net\\planereservation\\api\\pages\\reservation\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|solutionrelative:api\\pages\\reservation\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|c:\\users\\nash\\dot net\\planereservation\\api\\pages\\reservation\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|solutionrelative:api\\pages\\reservation\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|c:\\users\\nash\\dot net\\planereservation\\api\\pages\\reservation\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|solutionrelative:api\\pages\\reservation\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|c:\\users\\nash\\dot net\\planereservation\\api\\pages\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|solutionrelative:api\\pages\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|c:\\users\\nash\\dot net\\planereservation\\api\\controllers\\reservationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|solutionrelative:api\\controllers\\reservationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2B225172-6B9E-4CAE-B7A7-A71D78FAE393}|Core\\Core.csproj|c:\\users\\nash\\dot net\\planereservation\\core\\interfaces\\services\\iplaneservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2B225172-6B9E-4CAE-B7A7-A71D78FAE393}|Core\\Core.csproj|solutionrelative:core\\interfaces\\services\\iplaneservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2B225172-6B9E-4CAE-B7A7-A71D78FAE393}|Core\\Core.csproj|c:\\users\\nash\\dot net\\planereservation\\core\\interfaces\\repository\\iseatarrangementrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2B225172-6B9E-4CAE-B7A7-A71D78FAE393}|Core\\Core.csproj|solutionrelative:core\\interfaces\\repository\\iseatarrangementrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5C0D9CD7-975F-4ED4-A11F-C47AA57DFFC5}|Repository\\Repository.csproj|c:\\users\\nash\\dot net\\planereservation\\repository\\seatarrangementrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5C0D9CD7-975F-4ED4-A11F-C47AA57DFFC5}|Repository\\Repository.csproj|solutionrelative:repository\\seatarrangementrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|c:\\users\\nash\\dot net\\planereservation\\api\\pages\\plane\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|solutionrelative:api\\pages\\plane\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2B225172-6B9E-4CAE-B7A7-A71D78FAE393}|Core\\Core.csproj|c:\\users\\nash\\dot net\\planereservation\\core\\response\\passengerresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2B225172-6B9E-4CAE-B7A7-A71D78FAE393}|Core\\Core.csproj|solutionrelative:core\\response\\passengerresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2B225172-6B9E-4CAE-B7A7-A71D78FAE393}|Core\\Core.csproj|c:\\users\\nash\\dot net\\planereservation\\core\\entities\\passengerentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2B225172-6B9E-4CAE-B7A7-A71D78FAE393}|Core\\Core.csproj|solutionrelative:core\\entities\\passengerentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2B225172-6B9E-4CAE-B7A7-A71D78FAE393}|Core\\Core.csproj|c:\\users\\nash\\dot net\\planereservation\\core\\request\\passengerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2B225172-6B9E-4CAE-B7A7-A71D78FAE393}|Core\\Core.csproj|solutionrelative:core\\request\\passengerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|c:\\users\\nash\\dot net\\planereservation\\api\\pages\\reservation\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|solutionrelative:api\\pages\\reservation\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|c:\\users\\nash\\dot net\\planereservation\\api\\pages\\plane\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|solutionrelative:api\\pages\\plane\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|c:\\users\\nash\\dot net\\planereservation\\api\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|solutionrelative:api\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|c:\\users\\nash\\dot net\\planereservation\\api\\pages\\plane\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B049F131-CA4E-46B7-A64F-5A2908FA7562}|Api\\Api.csproj|solutionrelative:api\\pages\\plane\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -114,344 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PassengerService.cs",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Services\\PassengerService.cs",
-              "RelativeDocumentMoniker": "Services\\PassengerService.cs",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Services\\PassengerService.cs",
-              "RelativeToolTip": "Services\\PassengerService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAABeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-29T09:12:20.597Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "PlaneRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Core\\Request\\PlaneRequest.cs",
-              "RelativeDocumentMoniker": "Core\\Request\\PlaneRequest.cs",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Core\\Request\\PlaneRequest.cs",
-              "RelativeToolTip": "Core\\Request\\PlaneRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-29T08:52:55.926Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UnitOfWork.cs",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Repository\\UnitOfWork.cs",
-              "RelativeDocumentMoniker": "Repository\\UnitOfWork.cs",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Repository\\UnitOfWork.cs",
-              "RelativeToolTip": "Repository\\UnitOfWork.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-29T08:48:59.507Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ServiceBase.cs",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Services\\ServiceBase.cs",
-              "RelativeDocumentMoniker": "Services\\ServiceBase.cs",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Services\\ServiceBase.cs",
-              "RelativeToolTip": "Services\\ServiceBase.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-29T08:44:43.295Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "GetAllPlanesByPageQuery.cs",
+              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Queries\\Planes\\GetAllPlanesByPageQuery.cs",
+              "RelativeDocumentMoniker": "Api\\Queries\\Planes\\GetAllPlanesByPageQuery.cs",
+              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Queries\\Planes\\GetAllPlanesByPageQuery.cs",
+              "RelativeToolTip": "Api\\Queries\\Planes\\GetAllPlanesByPageQuery.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-29T09:49:16.915Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "PlaneService.cs",
               "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Services\\PlaneService.cs",
               "RelativeDocumentMoniker": "Services\\PlaneService.cs",
               "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Services\\PlaneService.cs",
               "RelativeToolTip": "Services\\PlaneService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAxwA4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-28T15:57:44.854Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PlaneController.cs",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Controllers\\PlaneController.cs",
-              "RelativeDocumentMoniker": "Api\\Controllers\\PlaneController.cs",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Controllers\\PlaneController.cs",
-              "RelativeToolTip": "Api\\Controllers\\PlaneController.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAYwAkAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-28T15:59:07.799Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ReservationService.cs",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Services\\ReservationService.cs",
-              "RelativeDocumentMoniker": "Services\\ReservationService.cs",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Services\\ReservationService.cs",
-              "RelativeToolTip": "Services\\ReservationService.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAoAAABEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-28T11:39:25.804Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "BaseController.cs",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Controllers\\BaseController.cs",
-              "RelativeDocumentMoniker": "Api\\Controllers\\BaseController.cs",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Controllers\\BaseController.cs",
-              "RelativeToolTip": "Api\\Controllers\\BaseController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-29T08:49:49.032Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "RepositoryBase.cs",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Repository\\RepositoryBase.cs",
-              "RelativeDocumentMoniker": "Repository\\RepositoryBase.cs",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Repository\\RepositoryBase.cs",
-              "RelativeToolTip": "Repository\\RepositoryBase.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-29T08:48:05.576Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "GetAllPlanesHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Handlers\\Planes\\GetAllPlanesHandler.cs",
-              "RelativeDocumentMoniker": "Api\\Handlers\\Planes\\GetAllPlanesHandler.cs",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Handlers\\Planes\\GetAllPlanesHandler.cs",
-              "RelativeToolTip": "Api\\Handlers\\Planes\\GetAllPlanesHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAdAAAA",
+              "Title": "GetAllPlanesByPageHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Handlers\\Planes\\GetAllPlanesByPageHandler.cs",
+              "RelativeDocumentMoniker": "Api\\Handlers\\Planes\\GetAllPlanesByPageHandler.cs",
+              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Handlers\\Planes\\GetAllPlanesByPageHandler.cs",
+              "RelativeToolTip": "Api\\Handlers\\Planes\\GetAllPlanesByPageHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-29T08:21:58.534Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Pages\\Reservation\\Create.cshtml",
-              "RelativeDocumentMoniker": "Api\\Pages\\Reservation\\Create.cshtml",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Pages\\Reservation\\Create.cshtml",
-              "RelativeToolTip": "Api\\Pages\\Reservation\\Create.cshtml",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAABUAAACjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-02-28T11:47:02.797Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Pages\\Reservation\\Details.cshtml",
-              "RelativeDocumentMoniker": "Api\\Pages\\Reservation\\Details.cshtml",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Pages\\Reservation\\Details.cshtml",
-              "RelativeToolTip": "Api\\Pages\\Reservation\\Details.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-02-28T13:20:49.863Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Pages\\Reservation\\Index.cshtml",
-              "RelativeDocumentMoniker": "Api\\Pages\\Reservation\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Pages\\Reservation\\Index.cshtml",
-              "RelativeToolTip": "Api\\Pages\\Reservation\\Index.cshtml",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAQwBwAAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-02-28T13:08:57.435Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "_ViewStart.cshtml",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Pages\\_ViewStart.cshtml",
-              "RelativeDocumentMoniker": "Api\\Pages\\_ViewStart.cshtml",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Pages\\_ViewStart.cshtml",
-              "RelativeToolTip": "Api\\Pages\\_ViewStart.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-02-28T15:59:57.808Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ReservationController.cs",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Controllers\\ReservationController.cs",
-              "RelativeDocumentMoniker": "Api\\Controllers\\ReservationController.cs",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Controllers\\ReservationController.cs",
-              "RelativeToolTip": "Api\\Controllers\\ReservationController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-28T15:59:03.762Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "IPlaneService.cs",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Core\\Interfaces\\Services\\IPlaneService.cs",
-              "RelativeDocumentMoniker": "Core\\Interfaces\\Services\\IPlaneService.cs",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Core\\Interfaces\\Services\\IPlaneService.cs",
-              "RelativeToolTip": "Core\\Interfaces\\Services\\IPlaneService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACYAAAA/AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-28T15:58:43.825Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "ISeatArrangementRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Core\\Interfaces\\Repository\\ISeatArrangementRepository.cs",
-              "RelativeDocumentMoniker": "Core\\Interfaces\\Repository\\ISeatArrangementRepository.cs",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Core\\Interfaces\\Repository\\ISeatArrangementRepository.cs",
-              "RelativeToolTip": "Core\\Interfaces\\Repository\\ISeatArrangementRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAABgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-28T13:29:48.521Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "SeatArrangementRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Repository\\SeatArrangementRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\SeatArrangementRepository.cs",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Repository\\SeatArrangementRepository.cs",
-              "RelativeToolTip": "Repository\\SeatArrangementRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAABnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-28T13:28:14.474Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Pages\\Plane\\Details.cshtml",
-              "RelativeDocumentMoniker": "Api\\Pages\\Plane\\Details.cshtml",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Pages\\Plane\\Details.cshtml",
-              "RelativeToolTip": "Api\\Pages\\Plane\\Details.cshtml",
-              "ViewState": "AQIAABUAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-02-28T13:23:05.95Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "PassengerResponse.cs",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Core\\Response\\PassengerResponse.cs",
-              "RelativeDocumentMoniker": "Core\\Response\\PassengerResponse.cs",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Core\\Response\\PassengerResponse.cs",
-              "RelativeToolTip": "Core\\Response\\PassengerResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-28T13:21:42.723Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "PassengerEntity.cs",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Core\\Entities\\PassengerEntity.cs",
-              "RelativeDocumentMoniker": "Core\\Entities\\PassengerEntity.cs",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Core\\Entities\\PassengerEntity.cs",
-              "RelativeToolTip": "Core\\Entities\\PassengerEntity.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAGAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-28T13:21:29.805Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "PassengerRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Core\\Request\\PassengerRequest.cs",
-              "RelativeDocumentMoniker": "Core\\Request\\PassengerRequest.cs",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Core\\Request\\PassengerRequest.cs",
-              "RelativeToolTip": "Core\\Request\\PassengerRequest.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-28T13:21:17.675Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "Index.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Pages\\Reservation\\Index.cshtml.cs",
-              "RelativeDocumentMoniker": "Api\\Pages\\Reservation\\Index.cshtml.cs",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Pages\\Reservation\\Index.cshtml.cs",
-              "RelativeToolTip": "Api\\Pages\\Reservation\\Index.cshtml.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAAAAAAkAAABmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-28T13:10:28.671Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "site.js",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\wwwroot\\js\\site.js",
-              "RelativeDocumentMoniker": "Api\\wwwroot\\js\\site.js",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\wwwroot\\js\\site.js",
-              "RelativeToolTip": "Api\\wwwroot\\js\\site.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-02-28T12:51:45.566Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Pages\\Plane\\Index.cshtml",
-              "RelativeDocumentMoniker": "Api\\Pages\\Plane\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Pages\\Plane\\Index.cshtml",
-              "RelativeToolTip": "Api\\Pages\\Plane\\Index.cshtml",
-              "ViewState": "AQIAAD8AAAAAAAAAAAAAAEwAAABlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-02-28T09:55:44.783Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "Index.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Pages\\Plane\\Index.cshtml.cs",
-              "RelativeDocumentMoniker": "Api\\Pages\\Plane\\Index.cshtml.cs",
-              "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Pages\\Plane\\Index.cshtml.cs",
-              "RelativeToolTip": "Api\\Pages\\Plane\\Index.cshtml.cs",
-              "ViewState": "AQIAACAAAAAAAAAAAAAgwDYAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-28T09:48:28.001Z",
               "EditorCaption": ""
             }
           ]

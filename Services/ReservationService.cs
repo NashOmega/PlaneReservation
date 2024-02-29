@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Services
 {
-    public class ReservationService : ServiceBase<ReservationService>, IReservationService
+    public class ReservationService : ServiceBase<ReservationService >, IReservationService
     {
         private readonly IPassengerService _passengerService;
 
