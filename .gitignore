@@ -60,3 +60,5 @@ packages/
 *.pubxml
 *.publishproj
 *.pp
+
+Api/obj/Release/net7.0/
