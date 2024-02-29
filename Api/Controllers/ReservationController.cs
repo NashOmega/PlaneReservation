@@ -1,14 +1,12 @@
-﻿using Api.Controllers.Interfaces;
-using Core.Interfaces.Services;
+﻿using Core.Interfaces.Services;
 using Core.Request;
 using Core.Response;
 using Microsoft.AspNetCore.Mvc;
-using Services;
 
 
 namespace Api.Controllers
 {
-    public class ReservationController : BaseController<ReservationController>, IReservationController
+    public class ReservationController : BaseController<ReservationController>
     {
         private readonly IReservationService _reservationService;
        

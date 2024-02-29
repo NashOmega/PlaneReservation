@@ -26,7 +26,7 @@ namespace Core.Interfaces.Services
         /// A MainResponse containing a paginated list of PlaneResponse objects if successful, 
         /// otherwise, a MainResponse with the appropriate error message. 
         /// </returns>
-        Task<MainResponse<IEnumerable<PlaneResponse>>> GetAvailablePlanesByPage(int page, int size);
+        Task<MainResponse<IEnumerable<PlaneResponse>>> GetAvailablePlanes();
 
         /// <summary>
         /// Retrieves a plane by its unique identifier.

@@ -10,6 +10,7 @@ builder.Services.AddDependenciesInjection();
 
 
 var app = builder.Build();
+app.InitializeDbTestDataAsync();
 
 if (!app.Environment.IsDevelopment())
 {

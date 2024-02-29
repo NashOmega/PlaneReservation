@@ -1,5 +1,4 @@
-using Api.Controllers;
-using Api.Controllers.Interfaces;
+using Core.Interfaces.Services;
 using Core.Response;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -8,28 +7,27 @@ namespace Api.Pages.Reservation
 {
     public class DetailsModel : PageModel
     {
-        private readonly IReservationController _reservationController;
+        private readonly IReservationService _reservationService;
 
         [BindProperty]
         public ReservationResponse NewReservationResponse { get; set; } = new ReservationResponse();
-        public DetailsModel(IReservationController reservationController)
+        public DetailsModel(IReservationService reservationService)
         {
-            _reservationController = reservationController;
+            _reservationService = reservationService;
         }
 
         public async Task<IActionResult> OnGet(int id)
         {
-            var res = await _reservationController.Details(id);
-            if (res.Value != null && res.Value.Success)
+            var res = await _reservationService.GetReservationById(id);
+            if (res.Success)
             {
-                NewReservationResponse = res.Value.Data;
-                Console.WriteLine();
+                if(res.Data != null) NewReservationResponse = res.Data;
                 return Page();
             }
             else
             {
-                ModelState.AddModelError("", res.Value.Message);
-                TempData["error"] = res.Value.Message;
+                ModelState.AddModelError("", res.Message);
+                TempData["error"] = res.Message;
                 return Page();
             }
         }

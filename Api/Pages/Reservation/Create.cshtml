@@ -19,13 +19,13 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="ReservationRequest.DepartureDate" class="control-label"></label>
-                    <input asp-for="ReservationRequest.DepartureDate" class="form-control" type="datetime-local" value="@DateTime.Now.ToString(" yyyy-MM-ddTHH:mm:ss")" />
+                    <input asp-for="ReservationRequest.DepartureDate" class="form-control" type="datetime-local" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
                     <span asp-validation-for="ReservationRequest.DepartureDate" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="ReservationRequest.PlaneId" class="control-label"></label>
                     <select asp-for="ReservationRequest.PlaneId" class="form-control">
-                        <option value="">-- Select a plane --</option>
+                        <option value="">Select a plane</option>
                         @foreach (var plane in Model.PlaneList)
                         {
                             <option value="@plane.Id">@plane.Name</option>
@@ -39,17 +39,24 @@
                     int j = i + 1;
                     <p class="mt-3">Passenger @j</p>
                     <div class="form-group  m-5 mt-0 mb-0 ">
-                        <label for="ReservationRequest_PassengerRequests_@(i)__LastName" class="control-label">Last Name</label>
-                        <input id="ReservationRequest_PassengerRequests_@(i)__LastName" name="ReservationRequest.PassengerRequests[@(i)].LastName" class="form-control" />
+                        <div>
+                        <label for="LastName_@i" class="control-label">Lastname</label>
+                        <input id="LastName_@i" name="ReservationRequest.PassengerRequests[@(i)].LastName" class="form-control" data-val="true" 
+                             data-val-length="The Passenger Lastname must be between 3 and 45 characters." data-val-length-max="45" data-val-length-min="3" data-val-required="The Passenger Lastname is required." />
+                        <span class="text-danger field-validation-valid" data-valmsg-for="ReservationRequest.PassengerRequests[@(i)].LastName" data-valmsg-replace="true"></span>
+                    </div>
+                    <div>
+                        <label for="FirstName_@i" class="control-label">Firstname</label>
+                        <input id="FirstName_@i" name="ReservationRequest.PassengerRequests[@(i)].FirstName" class="form-control" data-val="true"
+                               data-val-length="The Passenger Firstname must be between 3 and 45 characters." data-val-length-max="45" data-val-length-min="3" data-val-required="The Passenger Firstname is required." />
+                        <span class="text-danger field-validation-valid" data-valmsg-for="ReservationRequest.PassengerRequests[@(i)].FirstName" data-valmsg-replace="true"></span>
+                    </div>
                         
-
-                        <label for="ReservationRequest_PassengerRequests_@(i)__FirstName" class="control-label">First Name</label>
-                        <input id="ReservationRequest_PassengerRequests_@(i)__FirstName" name="ReservationRequest.PassengerRequests[@(i)].FirstName" class="form-control" />
-                       
-
-                        <label for="ReservationRequest_PassengerRequests_@(i)__Email" class="control-label">Email</label>
-                        <input id="ReservationRequest_PassengerRequests_@(i)__Email" name="ReservationRequest.PassengerRequests[@(i)].Email" class="form-control" />
-                      
+                    <div>
+                        <label for="Email_@i" class="control-label">Email</label>
+                        <input id="Email_@i" name="ReservationRequest.PassengerRequests[@(i)].Email" class="form-control" data-val="true" data-val-email="Invalid email format." data-val-required="The Passenger Email is required." />
+                        <span class="text-danger field-validation-valid" data-valmsg-for="ReservationRequest.PassengerRequests[@(i)].Email" data-valmsg-replace="true"></span>
+                    </div>
                     </div>
                     i++;
                 }
@@ -62,7 +69,9 @@
     </div>
 </div>
 
-<div class="mt-3">
-    <a href="/Page/Index" class="btn btn-dark">Back to List</a>
-</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
 

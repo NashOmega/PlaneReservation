@@ -8,12 +8,10 @@ using Microsoft.Extensions.Logging;
 
 namespace Services
 {
-    public class ReservationService : IReservationService
+    public class ReservationService : ServiceBase<ReservationService>, IReservationService
     {
-        private readonly IUnitOfWork _unitOfWork;
         private readonly IPassengerService _passengerService;
-        private readonly IMapper _mapper;
-        private readonly ILogger<ReservationService> _logger;
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ReservationService"/> class.
@@ -24,12 +22,10 @@ namespace Services
         /// <param name="passengerService">The service for handling passenger-related operations.</param>
         /// <param name="mapper">The mapper for mapping between different types.</param>
         /// <param name="logger">The logger for logging messages.</param>
-        public ReservationService(IUnitOfWork unitOfWork,  IPassengerService passengerService, IMapper mapper, ILogger<ReservationService> logger)
+        public ReservationService(IUnitOfWork unitOfWork, IMapper mapper, ILoggerFactory factory, IPassengerService passengerService)
+            : base(unitOfWork, mapper, factory)
         {
-           _unitOfWork = unitOfWork;
             _passengerService = passengerService;
-            _mapper = mapper;
-            _logger = logger;
         }
 
         /// <summary>
@@ -44,7 +40,7 @@ namespace Services
         {
             _logger.LogInformation("Creating Reseervation");
 
-            var res = new MainResponse<ReservationResponse>();
+            MainResponse<ReservationResponse> res = new();
             try
             {
                 var plane = await _unitOfWork.Planes.FindByIdAsync(reservationRequest.PlaneId);
@@ -96,7 +92,7 @@ namespace Services
         public async Task<MainResponse<ReservationResponse>> AddReservation(ReservationRequest reservationRequest, PlaneEntity plane)
         {
             _logger.LogInformation("Adding Reservation");
-            var res = new MainResponse<ReservationResponse>();
+            MainResponse<ReservationResponse> res = new();
             var message = "Reservation Created Successfully";
             try
             {
@@ -138,14 +134,19 @@ namespace Services
 
         public async Task AffectSeats(ReservationEntity reservation, PlaneEntity plane)
         {
+            List <SeatArrangementEntity> seats = await _unitOfWork.Seats.FindSuitableAvailableSeats(reservation.Passengers.Count, plane.Id);
+            var i = 0;
             foreach (var passenger in reservation.Passengers)
             {
-                var seat = await _unitOfWork.Seats.FindAvailableSeat(plane.Id);
-                passenger.SeatNumber = seat.SeatNumber;
+                var seat = seats[i];
+                passenger.LastSeatNumber = seat.SeatNumber;
                 await _unitOfWork.Passengers.UpdateAsync(passenger);
 
                 seat.Status = false;
+                seat.Reservation = reservation;
+                seat.Passenger = passenger;
                 await _unitOfWork.Seats.UpdateAsync(seat);
+                i++;
             }
 
             plane.AvailableSeats -= reservation.Passengers.Count;
@@ -182,8 +183,9 @@ namespace Services
         {
             foreach (ReservationEntity oldReservation in passenger.Reservations)
             {
-                if(oldReservation.DepartureDate==reservation.DepartureDate 
-                    && oldReservation.DepartureCity==reservation.DepartureCity) return true;
+                if((oldReservation.DepartureDate==reservation.DepartureDate 
+                    && oldReservation.DepartureCity==reservation.DepartureCity)
+                    || oldReservation.PlaneId==reservation.PlaneId) return true;
             }
             return false;
         }

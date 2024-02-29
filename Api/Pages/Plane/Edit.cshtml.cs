@@ -1,35 +1,35 @@
-using Core.Response;
+using Core.Interfaces.Services;
 using Core.Request;
+using Core.Response;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Api.Controllers.Interfaces;
 
 namespace Api.Pages.Plane
 {
     public class EditModel : PageModel
     {
-        private readonly IPlaneController _planeController;
+        private readonly IPlaneService _planeService;
 
         [BindProperty]
         public PlaneResponse NewPlaneResponse { get; set; } = new PlaneResponse();
 
-        public EditModel(IPlaneController planeController)
+        public EditModel(IPlaneService planeService)
         {
-            _planeController = planeController;
+            _planeService = planeService;
         }
 
         public async Task<IActionResult> OnGet(int id)
         {
-            var res = await _planeController.Details(id);
-            if (res.Value != null && res.Value.Success)
+            var res = await _planeService.GetPlaneById(id);
+            if (res.Success)
             {
-                NewPlaneResponse = res.Value.Data;
+                if(res.Data !=null) NewPlaneResponse = res.Data;
                 return Page();
             }
             else
             {
-                ModelState.AddModelError("", res.Value.Message);
-                TempData["error"] = res.Value.Message;
+                ModelState.AddModelError("", res.Message);
+                TempData["error"] = res.Message;
                 return Page();
             }
         }
@@ -48,16 +48,16 @@ namespace Api.Pages.Plane
                 Serial = NewPlaneResponse.Serial
             };
 
-            var res = await _planeController.Edit(NewPlaneResponse.Id, planeRequest);
-            if (res.Value != null && res.Value.Success)
+            var res = await _planeService.UpdatePlane(NewPlaneResponse.Id, planeRequest);
+            if (res.Success)
             {
-                TempData["success"] = res.Value.Message;
-                return RedirectToPage("/Plane/details", new { id = res.Value.Data.Id });
+                TempData["success"] = res.Message;
+                return RedirectToPage("/Plane/details", new { id = res.Data?.Id });
             }
             else
             {
-                ModelState.AddModelError("", res.Value.Message);
-                TempData["error"] = res.Value.Message;
+                ModelState.AddModelError("", res.Message);
+                TempData["error"] = res.Message;
                 return Page();
             }
         }

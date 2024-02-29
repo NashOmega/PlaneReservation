@@ -1,35 +1,32 @@
-using Api.Controllers.Interfaces;
-using Azure;
+using Core.Interfaces.Services;
 using Core.Request;
 using Core.Response;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System;
-using System.Drawing;
 
 namespace Api.Pages.Reservation
 {
     public class CreateModel : PageModel
     {
-        private readonly IPlaneController _planeController;
-        private readonly IReservationController _reservationController;
+        private readonly IPlaneService _planeService;
+        private readonly IReservationService _reservationService;
 
         public IEnumerable<PlaneResponse> PlaneList { get; set; } = new List<PlaneResponse>();
 
         [BindProperty]
         public ReservationRequest ReservationRequest { get; set; } = new ReservationRequest();
-        public CreateModel(IPlaneController planeController, IReservationController reservationController)
+        public CreateModel(IPlaneService planeService, IReservationService reservationService)
         {
-            _planeController = planeController;
-            _reservationController = reservationController;
+            _planeService = planeService;
+            _reservationService = reservationService;
         }
 
         public async Task<IActionResult> OnGet(int passengersNumber)
         {
-            var res = await _planeController.GetAll(1, 10000);
-            if (res.Value != null && res.Value.Success)
+            var res = await _planeService.GetAvailablePlanes(); ;
+            if (res.Success)
             {
-                PlaneList = res.Value.Data;
+                if(res.Data != null) PlaneList = res.Data;
                 for (int i = 0; i< passengersNumber; i++)
                 {
                     var PassengerRequest = new PassengerRequest();
@@ -39,29 +36,31 @@ namespace Api.Pages.Reservation
             }
             else
             {
-                ModelState.AddModelError("", res.Value.Message);
+                ModelState.AddModelError("", res.Message);
                 TempData["error"] = "Try later. The plane list is unavailable";
                 return Page();
             }
         }
         public async Task<IActionResult> OnPost()
         {
+            var planesRes = await _planeService.GetAvailablePlanes();
+            if (planesRes.Success && planesRes.Data != null) PlaneList = planesRes.Data;
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            var res = await _reservationController.Create(ReservationRequest);
-            if (res.Value != null && res.Value.Success)
+            var res = await _reservationService.CreateReservation(ReservationRequest);
+            if (res.Success)
             {
-                TempData["success"] = res.Value.Message;
-                return RedirectToPage("/Reservation/details", new { id = res.Value.Data.Id });
+                TempData["success"] = res.Message;
+                return RedirectToPage("/Reservation/details", new { id = res.Data?.Id });
             }
             else
             {
-                ModelState.AddModelError("", res.Value.Message);
-                TempData["error"] = res.Value.Message;
-                return RedirectToPage("/Reservation/Create", new { passengersNumber = ReservationRequest.PassengerRequests.Count });
+                ModelState.AddModelError("", res.Message);
+                TempData["error"] = res.Message;
+                return Page();
             }
         }
     }

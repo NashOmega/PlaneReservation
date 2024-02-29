@@ -1,15 +1,12 @@
-﻿using Api.Controllers.Interfaces;
-using Core.Entities;
-using Core.Interfaces.Services;
+﻿using Core.Interfaces.Services;
 using Core.Request;
 using Core.Response;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using X.PagedList;
 
 namespace Api.Controllers
 {
-    public class PlaneController :  BaseController<PlaneController>, IPlaneController
+    public class PlaneController :  BaseController<PlaneController>
     {
         private readonly IPlaneService _planeService;
         public PlaneController(ILoggerFactory factory, IPlaneService planeService) : base(factory) 
@@ -34,12 +31,12 @@ namespace Api.Controllers
         }
         
         [HttpGet]
-        public async Task<ActionResult<MainResponse<IEnumerable<PlaneResponse>>>> GetAllAvailable(int page, int size)
+        public async Task<ActionResult<MainResponse<IEnumerable<PlaneResponse>>>> GetAllAvailable()
         {
             var res = new MainResponse<IEnumerable<PlaneResponse>>();
             try 
             {
-                res = await _planeService.GetAvailablePlanesByPage(page, size);
+                res = await _planeService.GetAvailablePlanes();
             }
             catch (Exception ex)
             {

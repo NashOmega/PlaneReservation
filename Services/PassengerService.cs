@@ -8,11 +8,9 @@ using Microsoft.Extensions.Logging;
 
 namespace Services
 {
-    public class PassengerService : IPassengerService
+    public class PassengerService :ServiceBase<PassengerService>, IPassengerService
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
-        private readonly ILogger<PassengerService> _logger;
+        
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PassengerService"/> class.
@@ -20,12 +18,8 @@ namespace Services
         /// <param name="passengerRepository">The repository for handling passenger data.</param>
         /// <param name="mapper">The mapper for mapping between different types.</param>
         /// <param name="logger">The logger for logging messages.</param>
-        public PassengerService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<PassengerService> logger)
-        {
-           _unitOfWork = unitOfWork;
-            _mapper = mapper;  
-            _logger = logger;
-        }
+        public PassengerService(IUnitOfWork unitOfWork, IMapper mapper, ILoggerFactory factory) 
+            : base(unitOfWork, mapper, factory) { }
 
         /// <summary>
         /// Adds or Updated all provided passengers to the database.

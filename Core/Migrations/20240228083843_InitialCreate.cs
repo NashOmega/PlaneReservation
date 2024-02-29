@@ -20,7 +20,7 @@ namespace Core.Migrations
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SeatNumber = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    LastSeatNumber = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -66,27 +66,6 @@ namespace Core.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SeatArrangement",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    SeatNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Status = table.Column<bool>(type: "bit", nullable: false),
-                    PlaneId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SeatArrangement", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_SeatArrangement_Plane_PlaneId",
-                        column: x => x.PlaneId,
-                        principalTable: "Plane",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "PassengerEntityReservationEntity",
                 columns: table => new
                 {
@@ -110,6 +89,39 @@ namespace Core.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "SeatArrangement",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SeatNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Status = table.Column<bool>(type: "bit", nullable: false),
+                    PlaneId = table.Column<int>(type: "int", nullable: false),
+                    PassengerId = table.Column<int>(type: "int", nullable: true),
+                    ReservationId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SeatArrangement", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SeatArrangement_Passenger_PassengerId",
+                        column: x => x.PassengerId,
+                        principalTable: "Passenger",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_SeatArrangement_Plane_PlaneId",
+                        column: x => x.PlaneId,
+                        principalTable: "Plane",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SeatArrangement_Reservation_ReservationId",
+                        column: x => x.ReservationId,
+                        principalTable: "Reservation",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_PassengerEntityReservationEntity_ReservationsId",
                 table: "PassengerEntityReservationEntity",
@@ -121,9 +133,19 @@ namespace Core.Migrations
                 column: "PlaneId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_SeatArrangement_PassengerId",
+                table: "SeatArrangement",
+                column: "PassengerId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_SeatArrangement_PlaneId",
                 table: "SeatArrangement",
                 column: "PlaneId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SeatArrangement_ReservationId",
+                table: "SeatArrangement",
+                column: "ReservationId");
         }
 
         /// <inheritdoc />

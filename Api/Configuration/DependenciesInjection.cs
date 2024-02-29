@@ -1,5 +1,4 @@
 ﻿using Api.Controllers;
-using Api.Controllers.Interfaces;
 using Core.Interfaces.Repository;
 using Core.Interfaces.SeedDatabase;
 using Core.Interfaces.Services;
@@ -16,9 +15,6 @@ namespace Api.Configuration
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-            services.AddScoped<IPlaneController, PlaneController>();
-            services.AddScoped<IReservationController, ReservationController>();
 
             services.AddScoped<IPlaneService, PlaneService>();
             services.AddScoped<IReservationService, ReservationService>();

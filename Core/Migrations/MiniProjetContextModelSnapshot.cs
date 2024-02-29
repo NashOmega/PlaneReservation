@@ -42,7 +42,7 @@ namespace Core.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SeatNumber")
+                    b.Property<string>("LastSeatNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -115,7 +115,13 @@ namespace Core.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("PassengerId")
+                        .HasColumnType("int");
+
                     b.Property<int>("PlaneId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ReservationId")
                         .HasColumnType("int");
 
                     b.Property<string>("SeatNumber")
@@ -127,7 +133,11 @@ namespace Core.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("PassengerId");
+
                     b.HasIndex("PlaneId");
+
+                    b.HasIndex("ReservationId");
 
                     b.ToTable("SeatArrangement");
                 });
@@ -160,13 +170,25 @@ namespace Core.Migrations
 
             modelBuilder.Entity("Core.Entities.SeatArrangementEntity", b =>
                 {
+                    b.HasOne("Core.Entities.PassengerEntity", "Passenger")
+                        .WithMany("Seats")
+                        .HasForeignKey("PassengerId");
+
                     b.HasOne("Core.Entities.PlaneEntity", "Plane")
                         .WithMany()
                         .HasForeignKey("PlaneId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Core.Entities.ReservationEntity", "Reservation")
+                        .WithMany()
+                        .HasForeignKey("ReservationId");
+
+                    b.Navigation("Passenger");
+
                     b.Navigation("Plane");
+
+                    b.Navigation("Reservation");
                 });
 
             modelBuilder.Entity("PassengerEntityReservationEntity", b =>
@@ -182,6 +204,11 @@ namespace Core.Migrations
                         .HasForeignKey("ReservationsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Core.Entities.PassengerEntity", b =>
+                {
+                    b.Navigation("Seats");
                 });
 
             modelBuilder.Entity("Core.Entities.PlaneEntity", b =>

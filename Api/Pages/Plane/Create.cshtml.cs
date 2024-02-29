@@ -1,4 +1,4 @@
-using Api.Controllers.Interfaces;
+using Core.Interfaces.Services;
 using Core.Request;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -7,13 +7,13 @@ namespace Api.Pages.Plane
 {
     public class CreateModel : PageModel
     {
-        private readonly IPlaneController _planeController;
+        private readonly IPlaneService _planeService;
 
         [BindProperty]
         public PlaneRequest NewPlaneRequest { get; set; } = new PlaneRequest();
-        public CreateModel(IPlaneController planeController)
+        public CreateModel(IPlaneService planeService)
         {
-           _planeController = planeController;
+           _planeService = planeService;
         }
 
         public void OnGet()
@@ -27,16 +27,16 @@ namespace Api.Pages.Plane
                 return Page();
             }
 
-            var res = await _planeController.Create(NewPlaneRequest);
-            if (res.Value != null && res.Value.Success)
+            var res = await _planeService.AddPlane(NewPlaneRequest);
+            if (res.Success)
             {
-                TempData["success"] = res.Value.Message;
-                return RedirectToPage("/Plane/details", new { id = res.Value.Data.Id });
+                TempData["success"] = res.Message;
+                return RedirectToPage("/Plane/details", new { id = res.Data?.Id });
             }
             else
             {
-                ModelState.AddModelError("", res.Value.Message);
-                TempData["error"] = res.Value.Message;
+                ModelState.AddModelError("", res.Message);
+                TempData["error"] = res.Message;
                 return Page();
             }    
         }

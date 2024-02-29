@@ -9,11 +9,9 @@ using X.PagedList;
 
 namespace Services
 {
-    public class PlaneService : IPlaneService
+    public class PlaneService : ServiceBase<PlaneService>, IPlaneService
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
-        private readonly ILogger<PlaneService> _logger;
+       
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PlaneService"/> class.
@@ -21,12 +19,8 @@ namespace Services
         /// <param name="planeRepository">The repository for managing plane data.</param>
         /// <param name="mapper">The mapper for object mapping.</param>
         /// <param name="logger">The logger for logging messages.</param>
-        public PlaneService(IUnitOfWork unitOfWok, IMapper mapper, ILogger<PlaneService> logger)
-        {
-           _unitOfWork = unitOfWok;
-            _mapper = mapper;
-            _logger = logger;
-        }
+        public PlaneService(IUnitOfWork unitOfWork, IMapper mapper, ILoggerFactory factory) 
+            : base(unitOfWork, mapper, factory) { }
 
         /// <summary>
         /// Retrieves a list of planes paginated by the specified page number and page size.
@@ -39,7 +33,7 @@ namespace Services
         /// </returns>
         public async Task<MainResponse<IEnumerable<PlaneResponse>>> GetPlanesByPage(int page, int size)
         {
-            var res = new MainResponse<IEnumerable<PlaneResponse>>();
+            MainResponse<IEnumerable<PlaneResponse>> res = new();
             var message = "This is the planes list";
             try
             { 
@@ -65,13 +59,13 @@ namespace Services
         /// A MainResponse containing a paginated list of PlaneResponse objects if successful, 
         /// otherwise, a MainResponse with the appropriate error message. 
         /// </returns>
-        public async Task<MainResponse<IEnumerable<PlaneResponse>>> GetAvailablePlanesByPage(int page, int size)
+        public async Task<MainResponse<IEnumerable<PlaneResponse>>> GetAvailablePlanes()
         {
-            var res = new MainResponse<IEnumerable<PlaneResponse>>();
+            MainResponse<IEnumerable<PlaneResponse>> res = new();
             var message = "This is the available planes list";
             try
             {
-                var planes = await _unitOfWork.Planes.FindAllAvailablePlanesByPageAsync(page, size);
+                var planes = await _unitOfWork.Planes.FindAllAsync();
                 res.Data = planes.Select(p => _mapper.Map<PlaneResponse>(p)).ToList();
                 res.Success = true;
             }
@@ -94,7 +88,7 @@ namespace Services
         /// </returns>
         public async Task<MainResponse<PlaneResponse>> GetPlaneById(int id)
         {
-            var res = new MainResponse<PlaneResponse>();
+            MainResponse<PlaneResponse> res = new();
             var message = "This is the plane of id " + id;
             try
             {
@@ -128,7 +122,7 @@ namespace Services
         /// </returns>
         public async Task<MainResponse<PlaneResponse>> AddPlane(PlaneRequest planeRequest)
         {
-            var res = new MainResponse<PlaneResponse>();
+            MainResponse<PlaneResponse> res = new();
             var message = "Plane Created Successfully";
             try
             { 
@@ -167,7 +161,7 @@ namespace Services
         /// </returns>
         public async Task<MainResponse<PlaneResponse>> UpdatePlane(int id, PlaneRequest planeRequest)
         {
-            var res = new MainResponse<PlaneResponse>();
+            MainResponse<PlaneResponse> res = new();
             var message = "Plane Updated Successfully";
             try
             {
@@ -206,7 +200,7 @@ namespace Services
         /// </returns>
         public async Task<MainResponse<bool>> DeletePlane(int id)
         {
-            var res = new MainResponse<bool>();
+            MainResponse<bool> res = new();
             var message = "Plane Deleted Successfully";
             try
             {

@@ -14,5 +14,9 @@ namespace Core.Entities
         public int PlaneId { get; set; }
         public PlaneEntity Plane { get; set; } = new PlaneEntity();
 
+        public int? PassengerId { get; set; }
+        public PassengerEntity? Passenger { get; set; }
+        public int? ReservationId { get; set; }
+        public ReservationEntity? Reservation { get; set; }
     }
 }

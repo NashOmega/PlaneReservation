@@ -2,6 +2,7 @@
 @model Api.Pages.Reservation.DetailsModel
 @{
     ViewData["Title"] = "Plane's Details";
+    int i = 1;
 }
 <partial name="_Notification" />
 <h3>Here Is The Plane's Information</h3>
@@ -26,14 +27,14 @@
 
     @foreach (var item in Model.NewReservationResponse.PassengerResponses)
     {
-        int i = 1;
         <dl class="row">
             <dt class="col-sm-2">
                 Passenger @i
             </dt>
             <dd class="col-sm-10" title="@item.Email">
-                @item.LastName @item.FirstName - Seat Number: @item.SeatNumber
+                @item.LastName @item.FirstName - Seat Number: @item.LastSeatNumber
             </dd> 
         </dl>
+        i++;
     }
 </div>

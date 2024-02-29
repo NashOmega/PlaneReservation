@@ -8,37 +8,12 @@
 <h3>List Of Planes</h3>
 <hr />
 
-<div class="row mb-4">
-    <div class="col-md-6">
-        <form method="get">
-            <div class="row mb-2">
-            <div class="col-md-4">
-                <label for="pageNumber" class="form-label">Page Number</label>
-                <br />
-                    <input type="number" id="pageNumber" name="pageNumber" aria-describedby="pageNumberDesc">
-                <div id="pageNumberDesc" class="form-text">Which page do you want?</div>
-            </div>
-            <div class="col-md-4">
-                <label for="size" class="form-label">Number of planes</label>
-                <br />
-                <input type="number" id="size" name="size" aria-describedby="listSize">
-                <div id="listSize" class="form-text">With how many planes?</div>
-            </div>
-            </div>
-                <button type="submit" class="btn btn-primary">Search</button>
-        </form>
-    </div>
-    <div class="col-md-6">
-    </div>
- </div>
-
 <div class="col-md-4" >
     <div class="row m-lg-1">
     <a asp-page="/Plane/Create" class="btn btn-primary">Create New</a>
     </div>
 </div>
-@{
- 
+<div id="table-container">
 <table class="table">
     <thead>
         <tr>
@@ -65,13 +40,50 @@
                 @Html.DisplayFor(modelItem => item.AvailableSeats)
             </td>
             <td>
-                <a href="/Plane/Details?id=@item.Id" class="btn btn-primary">Details</a> |
-                <a href="/Plane/Edit?id=@item.Id" class="btn btn-warning">Update</a> |
+                <a href="/Plane/Details?id=@item.Id" class="btn btn-primary">Details</a> 
+                <a href="/Plane/Edit?id=@item.Id" class="btn btn-warning">Update</a> 
                 <a href="/Plane/Delete?id=@item.Id" class="btn btn-danger">Delete</a>
             </td>
         </tr>
 }
     </tbody>
+       
 </table>
+    <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-4">
+                <div class="row m-lg-1">
+                    <button id="see-more-btn" class="btn btn-primary mx-auto p-2">See More</button>
+                </div>
+             </div>
+    </div>
+</div>
 
-}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var pageNumber = 2;
+        $('#see-more-btn').click(function () {
+            $.get('@Url.Page("/Plane/Index")', { pageNumber: pageNumber }, function (data) {
+                $.each(data, function (index, item) {
+                    var newRow = '<tr>' +
+                        '<td>' + item.Name + '</td>' +
+                        '<td>' + item.Model + '</td>' +
+                        '<td>' + item.Serial + '</td>' +
+                        '<td>' + item.AvailableSeats + '</td>' +
+                        '<td>' +
+                        '<a href="/Plane/Details?id=' + item.Id + '" class="btn btn-primary">Details</a>  ' +
+                        '<a href="/Plane/Edit?id=' + item.Id + '" class="btn btn-warning">Update</a>  ' +
+                        '<a href="/Plane/Delete?id=' + item.Id + '" class="btn btn-danger">Delete</a>' +
+                        '</td>' +
+                        '</tr>';
+                    $('#table-container table tbody').append(newRow);
+                });
+                pageNumber++;
+            });
+        });
+    });
+</script>
+
+

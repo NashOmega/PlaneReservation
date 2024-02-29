@@ -10,9 +10,12 @@ namespace Repository
     {
         public SeatArrangementRepository(MiniProjetContext context, ILogger logger) : base(context, logger) { }
 
-        public async Task<SeatArrangementEntity> FindAvailableSeat(int planeId)
+        public async Task<List<SeatArrangementEntity>> FindSuitableAvailableSeats(int quantity, int planeId)
         {
-            return await _context.SeatArrangements.FirstAsync(s => s.Status == true && s.PlaneId == planeId);
+            return await _context.SeatArrangements
+                .Where(s => s.Status == true && s.PlaneId == planeId)
+                .Take(quantity)
+                .ToListAsync();
         }
 
         public async Task GeneratePlaneSeats(PlaneEntity newPlane)
