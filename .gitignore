@@ -1,1 +1,62 @@
 .vs/
+
+# Fichiers binaires
+*.exe
+*.dll
+*.pdb
+*.cache
+*.suo
+*.user
+*.bak
+*.tmp
+
+# Fichiers de build et objets
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+[Tt]emp/
+[Tt]ests/
+
+# Fichiers de sauvegarde Visual Studio
+*.[Oo]rg
+*.[Bb]ak
+*.[Cc]ache
+.[Cc]ached.
+*.dbmdl
+*.jfm
+*.pfx
+*.publishsettings
+*.svclog
+*.vspscc
+*.vssscc
+*.xap
+*.deploy
+*.cache
+*.sqlce
+*.user
+*.iuser
+*.suo
+*.sln.docstates
+
+# Fichiers ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# Packages NuGet
+packages/
+
+# Fichiers de publication
+*.Publish.xml
+*.pubxml
+*.publishproj
+*.pp
