@@ -1,5 +1,4 @@
-﻿using Api.Controllers;
-using Core.Interfaces.Repository;
+﻿using Core.Interfaces.Repository;
 using Core.Interfaces.SeedDatabase;
 using Core.Interfaces.Services;
 using Repository;

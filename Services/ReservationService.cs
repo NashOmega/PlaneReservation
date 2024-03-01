@@ -8,10 +8,10 @@ using Microsoft.Extensions.Logging;
 
 namespace Services
 {
-    public class ReservationService : ServiceBase<ReservationService >, IReservationService
+    public class ReservationService : ServiceBase<ReservationService>, IReservationService
     {
-        private readonly IPassengerService _passengerService;
 
+        private readonly PassengerService _passengerService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ReservationService"/> class.
@@ -22,7 +22,7 @@ namespace Services
         /// <param name="passengerService">The service for handling passenger-related operations.</param>
         /// <param name="mapper">The mapper for mapping between different types.</param>
         /// <param name="logger">The logger for logging messages.</param>
-        public ReservationService(IUnitOfWork unitOfWork, IMapper mapper, ILoggerFactory factory, IPassengerService passengerService)
+        public ReservationService(IUnitOfWork unitOfWork, IMapper mapper, ILoggerFactory factory, PassengerService passengerService)
             : base(unitOfWork, mapper, factory)
         {
             _passengerService = passengerService;
@@ -43,8 +43,9 @@ namespace Services
             MainResponse<ReservationResponse> res = new();
             try
             {
+                var reservation = _mapper.Map<ReservationEntity>(reservationRequest);
                 var plane = await _unitOfWork.Planes.FindByIdAsync(reservationRequest.PlaneId);
-                
+
 
                 if (plane != null && IsPlaneAvailable(plane))
                 {
@@ -96,32 +97,26 @@ namespace Services
             var message = "Reservation Created Successfully";
             try
             {
-                var addedPassengersResponse = await _passengerService.AddOrUpadatePassengers(reservationRequest.PassengerRequests);
+                var reservation = _mapper.Map<ReservationEntity>(reservationRequest);
 
-                if (addedPassengersResponse.Success) {
-                    ReservationEntity reservation = _mapper.Map<ReservationEntity>(reservationRequest);
-                    var reservationWithPassengersList = await AddPassengersList(reservation, reservationRequest.PassengerRequests);
+                reservation.Passengers = await _passengerService.AddOrUpadatePassengers(reservationRequest.PassengerRequests);
 
-                    if (reservationWithPassengersList.Passengers.Count != 0)
-                    {
-                        reservationWithPassengersList.Plane = plane;
-                        var createdReservation = await _unitOfWork.Reservations.CreateAsync(reservationWithPassengersList);
+                reservation = await FilterPassengersList(reservation);
 
-                        await AffectSeats(createdReservation, plane);
+                if (reservation.Passengers.Count != 0)
+                {
+                    reservation.Plane = plane;
+                    var createdReservation = await _unitOfWork.Reservations.CreateAsync(reservation);
 
-                        res.Success = await _unitOfWork.CompleteAsync();
-                        res.Data = _mapper.Map<ReservationResponse>(createdReservation);
-                          
-                    }
-                    else
-                    {
-                        message = "Same Reservation Already Exists";
-                    }
+                    await AffectSeats(createdReservation, plane);
+
+                    res.Success = await _unitOfWork.CompleteAsync();
+                    res.Data = _mapper.Map<ReservationResponse>(createdReservation);
                 }
                 else
                 {
-                    message = addedPassengersResponse.Message; 
-                }  
+                    message = "Same Reservation Already Exists";
+                }
             }
             catch (Exception ex)
             {
@@ -132,9 +127,53 @@ namespace Services
             return res;
         }
 
+
+        /// <summary>
+        /// Adds the list of passengers to the reservation entity.
+        /// </summary>
+        /// <param name="reservation">The reservation entity to which passengers will be added.</param>
+        /// <param name="passengerRequests">The collection of passenger requests containing information about passengers to be added.</param>
+        /// <returns>The updated reservation entity with added passengers.</returns>
+        public async Task<ReservationEntity> FilterPassengersList(ReservationEntity reservation)
+        {
+            List<PassengerEntity> passengersToRemove = new List<PassengerEntity>();
+
+            foreach (PassengerEntity passenger in reservation.Passengers)
+            {
+                var dbPassenger = await _unitOfWork.Passengers.FindByEmail(passenger.Email);
+
+                if (dbPassenger != null && DoesPassengerHaveTheSameReservation(dbPassenger, reservation) == true)
+                    passengersToRemove.Add(passenger);
+            }
+            foreach (PassengerEntity passenger in passengersToRemove)
+            {
+                reservation.Passengers.Remove(passenger);
+            }
+            return reservation;
+        }
+
+        /// <summary>
+        /// Checks if a passenger already has the same reservation.
+        /// </summary>
+        /// <param name="passenger">The passenger entity to check.</param>
+        /// <param name="reservation">The reservation entity to compare with.</param>
+        /// <returns>True if the passenger already has the same reservation 
+        /// based on the date and the city; otherwise, false.
+        /// </returns>
+        public bool DoesPassengerHaveTheSameReservation(PassengerEntity passenger, ReservationEntity reservation)
+        {
+            foreach (ReservationEntity oldReservation in passenger.Reservations)
+            {
+                if ((oldReservation.DepartureDate == reservation.DepartureDate
+                    && oldReservation.DepartureCity == reservation.DepartureCity)
+                    || oldReservation.PlaneId == reservation.PlaneId) return true;
+            }
+            return false;
+        }
+
         public async Task AffectSeats(ReservationEntity reservation, PlaneEntity plane)
         {
-            List <SeatArrangementEntity> seats = await _unitOfWork.Seats.FindSuitableAvailableSeats(reservation.Passengers.Count, plane.Id);
+            List<SeatArrangementEntity> seats = await _unitOfWork.Seats.FindSuitableAvailableSeats(reservation.Passengers.Count, plane.Id);
             var i = 0;
             foreach (var passenger in reservation.Passengers)
             {
@@ -153,42 +192,6 @@ namespace Services
             await _unitOfWork.Planes.UpdateAsync(plane);
         }
 
-        /// <summary>
-        /// Adds the list of passengers to the reservation entity.
-        /// </summary>
-        /// <param name="reservation">The reservation entity to which passengers will be added.</param>
-        /// <param name="passengerRequests">The collection of passenger requests containing information about passengers to be added.</param>
-        /// <returns>The updated reservation entity with added passengers.</returns>
-        public async Task<ReservationEntity> AddPassengersList(ReservationEntity reservation, ICollection<PassengerRequest> passengerRequests)
-        {
-            foreach (PassengerRequest passengerRequest in passengerRequests)
-            {
-                var passenger = await _unitOfWork.Passengers.FindByEmail(passengerRequest.Email);
- 
-                if (passenger != null && !DoesPassengerHaveTheSameReservation(passenger, reservation)) 
-                    reservation.Passengers.Add(passenger);
-            }
-            return reservation;
-        }
-
-        /// <summary>
-        /// Checks if a passenger already has the same reservation.
-        /// </summary>
-        /// <param name="passenger">The passenger entity to check.</param>
-        /// <param name="reservation">The reservation entity to compare with.</param>
-        /// <returns>True if the passenger already has the same reservation 
-        /// based on the date and the city; otherwise, false.
-        /// </returns>
-        public bool DoesPassengerHaveTheSameReservation(PassengerEntity passenger, ReservationEntity reservation)
-        {
-            foreach (ReservationEntity oldReservation in passenger.Reservations)
-            {
-                if((oldReservation.DepartureDate==reservation.DepartureDate 
-                    && oldReservation.DepartureCity==reservation.DepartureCity)
-                    || oldReservation.PlaneId==reservation.PlaneId) return true;
-            }
-            return false;
-        }
 
         /// <summary>
         /// Checks if a plane is available (i.e., has available seats).
@@ -239,18 +242,16 @@ namespace Services
         public async Task<MainResponse<ReservationResponse>> GetReservationById(int id)
         {
             var res = new MainResponse<ReservationResponse>();
-            var message = "This is the reservation of id " + id;
+            var message = "Plane Not Found";
+
             try
             {
-                var reservation = await _unitOfWork.Reservations.FindByIdIncludePassengers(id);
+                var reservation= await _unitOfWork.Reservations.FindByIdAsync(id);
                 if (reservation != null)
                 {
                     res.Data = _mapper.Map<ReservationResponse>(reservation);
                     res.Success = true;
-                }
-                else
-                {
-                    message = "Plane Not Found";
+                    message = "This is the reservation of id " + id;
                 }
             }
             catch (Exception ex)

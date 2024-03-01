@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Core.Interfaces.Repository;
-using Microsoft.CodeAnalysis.Elfie.Diagnostics;
 using Microsoft.Extensions.Logging;
 
 namespace Services

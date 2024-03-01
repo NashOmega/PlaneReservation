@@ -3,7 +3,6 @@ using Core.Entities;
 using Core.Interfaces.Repository;
 using Core.Interfaces.Services;
 using Core.Request;
-using Core.Response;
 using Microsoft.Extensions.Logging;
 
 namespace Services
@@ -29,10 +28,9 @@ namespace Services
         /// A MainResponse object containing list of details of the added and updates passengers if successful,
         /// otherwise, a MainResponse with the appropriate error message.
         /// </returns>
-        public async Task<MainResponse<ICollection<PassengerResponse>>> AddOrUpadatePassengers(ICollection<PassengerRequest> passengerRequests)
+        public async Task<ICollection<PassengerEntity>> AddOrUpadatePassengers(ICollection<PassengerRequest> passengerRequests)
         {
-            var res = new MainResponse<ICollection<PassengerResponse>>();
-            var message = "Passengers Added and Updated Successfully";
+            var passengersList = new List<PassengerEntity>();
             try 
             { 
                 foreach (PassengerRequest passengerRequest in passengerRequests)
@@ -40,55 +38,23 @@ namespace Services
                     var dbPassenger = await _unitOfWork.Passengers.FindByEmail(passengerRequest.Email);
                     if (dbPassenger==null)
                     {
-                        var addedPassenger = await AddPassenger(_mapper.Map<PassengerEntity>(passengerRequest));
-                        if (addedPassenger != null) res.Data?.Add(addedPassenger);
+                        var addedPassenger = await _unitOfWork.Passengers.CreateAsync(_mapper.Map<PassengerEntity>(passengerRequest));
+                        if (addedPassenger != null) passengersList.Add(addedPassenger);
                     }
                     else
                     {
-                        var updatePassenger = await UpdatePassenger(_mapper.Map(passengerRequest, dbPassenger));
-                        if (updatePassenger != null) res.Data?.Add(updatePassenger);
+                        var updatePassenger = await _unitOfWork.Passengers.UpdateAsync(_mapper.Map(passengerRequest, dbPassenger));
+                        if (updatePassenger != null) passengersList.Add(updatePassenger);
                     }
                 }
-                res.Success = true;
+                return passengersList;
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error Occured: {ErrorMessage}", ex.Message);
-                message= ex.Message;
+                throw;
             }
-            res.Message = message;
-            return res;
-        }
-
-        /// <summary>
-        /// Adds a new passenger to the database.
-        /// </summary>
-        /// <param name="passenger">The passenger entity to be added.</param>
-        /// <returns>
-        /// A PassengerResponse object containing information about the added passenger,
-        /// or null if the passenger could not be added.
-        /// </returns>
-        public async Task<PassengerResponse?> AddPassenger(PassengerEntity passenger)
-        {
-                var createdPassenger = await _unitOfWork.Passengers.CreateAsync(passenger);
-                await _unitOfWork.CompleteAsync();
-                return _mapper.Map<PassengerResponse>(createdPassenger); 
-        }
-
-
-        /// <summary>
-        /// Updates an existing passenger in the database.
-        /// </summary>
-        /// <param name="passenger">The passenger entity with updated information.</param>
-        /// <returns>
-        /// A PassengerResponse object containing information about the updated passenger,
-        /// or null if the passenger could not be updated.
-        /// </returns>
-        public async Task<PassengerResponse?> UpdatePassenger(PassengerEntity passenger)
-        {
-            var updatedPassenger = await _unitOfWork.Passengers.UpdateAsync(passenger);
-            await _unitOfWork.CompleteAsync();
-            return _mapper.Map<PassengerResponse>(updatedPassenger);
+            
         }
     }
 }
