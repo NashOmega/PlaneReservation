@@ -11,7 +11,7 @@ namespace Services
     public class ReservationService : ServiceBase<ReservationService>, IReservationService
     {
 
-        private readonly PassengerService _passengerService;
+        private readonly IPassengerService _passengerService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ReservationService"/> class.
@@ -22,7 +22,7 @@ namespace Services
         /// <param name="passengerService">The service for handling passenger-related operations.</param>
         /// <param name="mapper">The mapper for mapping between different types.</param>
         /// <param name="logger">The logger for logging messages.</param>
-        public ReservationService(IUnitOfWork unitOfWork, IMapper mapper, ILoggerFactory factory, PassengerService passengerService)
+        public ReservationService(IUnitOfWork unitOfWork, IMapper mapper, ILoggerFactory factory, IPassengerService passengerService)
             : base(unitOfWork, mapper, factory)
         {
             _passengerService = passengerService;

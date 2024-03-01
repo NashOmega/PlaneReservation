@@ -47,6 +47,7 @@ namespace Services
                         if (updatePassenger != null) passengersList.Add(updatePassenger);
                     }
                 }
+                await _unitOfWork.CompleteAsync();
                 return passengersList;
             }
             catch (Exception ex)
