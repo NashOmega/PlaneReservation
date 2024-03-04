@@ -18,11 +18,9 @@ namespace Repository
             return await _context.Planes.Skip(skip).Take(size).ToListAsync();
         } 
         
-        public async Task<IEnumerable<PlaneEntity>> FindAllAvailablePlanesByPageAsync(int page, int size)
+        public async Task<IEnumerable<PlaneEntity>> FindAvailablePlanesAsync()
         {
-            int skip = (page - 1) * size;
-
-            return await _context.Planes.Where(p=> p.AvailableSeats !=0).Skip(skip).Take(size).ToListAsync();
+            return await _context.Planes.Where(p=> p.AvailableSeats !=0).ToListAsync();
         }
     }
 }

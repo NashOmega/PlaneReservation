@@ -10,7 +10,8 @@ namespace Core.Profiles
         {
             CreateMap<PlaneRequest, PlaneEntity>();
             CreateMap<PassengerRequest, PassengerEntity>();
-            CreateMap<ReservationRequest, ReservationEntity>();
+            CreateMap<ReservationRequest, ReservationEntity>()
+                .ForMember(dest => dest.Passengers, opt => opt.MapFrom(src => src.PassengerRequests));
         }
     }
 }

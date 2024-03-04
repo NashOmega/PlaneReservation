@@ -17,7 +17,6 @@ namespace Api.Configuration
 
             services.AddScoped<IPlaneService, PlaneService>();
             services.AddScoped<IReservationService, ReservationService>();
-            services.AddScoped<IPassengerService, PassengerService>();
 
             services.AddScoped<IInitSeedService, InitSeedService>();
 

@@ -65,7 +65,7 @@ namespace Services
             var message = "This is the available planes list";
             try
             {
-                var planes = await _unitOfWork.Planes.FindAllAsync();
+                var planes = await _unitOfWork.Planes.FindAvailablePlanesAsync();
                 res.Data = planes.Select(p => _mapper.Map<PlaneResponse>(p)).ToList();
                 res.Success = true;
             }

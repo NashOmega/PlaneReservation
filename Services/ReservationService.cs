@@ -11,8 +11,6 @@ namespace Services
     public class ReservationService : ServiceBase<ReservationService>, IReservationService
     {
 
-        private readonly IPassengerService _passengerService;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ReservationService"/> class.
         /// </summary>
@@ -22,11 +20,8 @@ namespace Services
         /// <param name="passengerService">The service for handling passenger-related operations.</param>
         /// <param name="mapper">The mapper for mapping between different types.</param>
         /// <param name="logger">The logger for logging messages.</param>
-        public ReservationService(IUnitOfWork unitOfWork, IMapper mapper, ILoggerFactory factory, IPassengerService passengerService)
-            : base(unitOfWork, mapper, factory)
-        {
-            _passengerService = passengerService;
-        }
+        public ReservationService(IUnitOfWork unitOfWork, IMapper mapper, ILoggerFactory factory)
+            : base(unitOfWork, mapper, factory){ }
 
         /// <summary>
         /// Creates a new reservation.
@@ -97,16 +92,13 @@ namespace Services
             var message = "Reservation Created Successfully";
             try
             {
-                var reservation = _mapper.Map<ReservationEntity>(reservationRequest);
-
-                reservation.Passengers = await _passengerService.AddOrUpadatePassengers(reservationRequest.PassengerRequests);
-
-                reservation = await FilterPassengersList(reservation);
+               var reservation = await FilterPassengersList(_mapper.Map<ReservationEntity>(reservationRequest));
 
                 if (reservation.Passengers.Count != 0)
                 {
                     reservation.Plane = plane;
                     var createdReservation = await _unitOfWork.Reservations.CreateAsync(reservation);
+                    await _unitOfWork.CompleteAsync();
 
                     await AffectSeats(createdReservation, plane);
 
@@ -142,7 +134,7 @@ namespace Services
             {
                 var dbPassenger = await _unitOfWork.Passengers.FindByEmail(passenger.Email);
 
-                if (dbPassenger != null && DoesPassengerHaveTheSameReservation(dbPassenger, reservation) == true)
+                if (dbPassenger != null && DoesPassengerHaveTheSameReservation(dbPassenger, reservation))
                     passengersToRemove.Add(passenger);
             }
             foreach (PassengerEntity passenger in passengersToRemove)
@@ -242,11 +234,11 @@ namespace Services
         public async Task<MainResponse<ReservationResponse>> GetReservationById(int id)
         {
             var res = new MainResponse<ReservationResponse>();
-            var message = "Plane Not Found";
+            var message = "Reservation Not Found";
 
             try
             {
-                var reservation= await _unitOfWork.Reservations.FindByIdAsync(id);
+                var reservation= await _unitOfWork.Reservations.FindByIdIncludePassengers(id);
                 if (reservation != null)
                 {
                     res.Data = _mapper.Map<ReservationResponse>(reservation);

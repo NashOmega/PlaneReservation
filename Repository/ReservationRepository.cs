@@ -13,8 +13,8 @@ namespace Repository
         public async Task<ReservationEntity?> FindByIdIncludePassengers(int id)
         {
             return await _context.Reservations
-                          .Include(r => r.Passengers)
-                          .FirstOrDefaultAsync(r => r.Id == id);
+                        .Include(r => r.Passengers)
+                        .FirstOrDefaultAsync(r => r.Id == id);
         }
     }
 }
