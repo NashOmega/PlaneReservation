@@ -66,8 +66,7 @@
               "RelativeToolTip": "Core\\Interfaces\\Repository\\IPlaneRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-04T09:03:54.577Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-04T09:03:54.577Z"
             },
             {
               "$type": "Document",
@@ -79,8 +78,7 @@
               "RelativeToolTip": "Repository\\PlaneRepository.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAABAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-04T09:03:26.434Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-04T09:03:26.434Z"
             },
             {
               "$type": "Document",
@@ -92,8 +90,7 @@
               "RelativeToolTip": "Services\\PlaneService.cs",
               "ViewState": "AQIAADEAAAAAAAAAAAAYwEEAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-04T08:59:46.99Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-04T08:59:46.99Z"
             },
             {
               "$type": "Document",
@@ -105,8 +102,7 @@
               "RelativeToolTip": "Repository\\ReservationRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-04T08:58:40.202Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-04T08:58:40.202Z"
             },
             {
               "$type": "Document",
@@ -118,8 +114,7 @@
               "RelativeToolTip": "Api\\Pages\\Reservation\\Details.cshtml.cs",
               "ViewState": "AQIAAAgAAAAAAAAAAAAAwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-04T08:57:54.938Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-04T08:57:54.938Z"
             },
             {
               "$type": "Document",
@@ -129,7 +124,7 @@
               "RelativeDocumentMoniker": "Api\\Pages\\Reservation\\Details.cshtml",
               "ToolTip": "C:\\Users\\Nash\\dot net\\PlaneReservation\\Api\\Pages\\Reservation\\Details.cshtml",
               "RelativeToolTip": "Api\\Pages\\Reservation\\Details.cshtml",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAACIAAAA9AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-03-04T08:57:38.595Z",
               "EditorCaption": ""
@@ -144,8 +139,7 @@
               "RelativeToolTip": "Core\\Profiles\\EntityToResponseProfile.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAABuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-04T08:54:11.144Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-04T08:54:11.144Z"
             },
             {
               "$type": "Document",
@@ -157,8 +151,7 @@
               "RelativeToolTip": "Services\\ReservationService.cs",
               "ViewState": "AQIAAOMAAAAAAAAAAAAmwPAAAABeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-01T10:40:55.818Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-01T10:40:55.818Z"
             },
             {
               "$type": "Document",
@@ -170,8 +163,7 @@
               "RelativeToolTip": "Api\\Configuration\\DependenciesInjection.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAABKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-01T10:40:42.789Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-01T10:40:42.789Z"
             },
             {
               "$type": "Document",
